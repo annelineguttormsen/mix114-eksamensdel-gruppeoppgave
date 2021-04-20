@@ -4,7 +4,7 @@ const kalenderElement = document.getElementById("kalender__svg");
 /*sted 9999, år 671, 4 (april), i JSON*/
 fetch("https://trialmix.infomedia.uib.no/andregrader/9999/671/4/json")
 .then(response => response.json())
-.then((data) => {kalenderData = data; lagKalender()});
+.then((data) => {kalenderData = Object.entries(data); lagKalender()});
 
 function createSVGElement(tag) {
     let ns = "http://www.w3.org/2000/svg";
@@ -12,12 +12,18 @@ function createSVGElement(tag) {
 }
 
 function lagKalender() {
+    //HERREGUUUUUUD man må grave
+    console.log(kalenderData[0][1]);
+    kalenderData = Object.entries(kalenderData[0][1]);
+    kalenderData = kalenderData[0][1];
+    console.log(kalenderData);
     //fordi det er 30 dager uansett måned, gå gjennom 30 ganger
     let x = 10;
     let y = 10;
     for (let i = 0;i < 30;i++) {
         kalenderElement.appendChild(lagKalenderDag(x, y));
         kalenderElement.appendChild(lagKalenderDagTekst(x+10,y+20,i+1));
+        kalenderElement.appendChild(lagKalenderDagTemperatur(x+50,y+90,kalenderData[i+1][1] /*ENDRE VERDI HER*/));
         if (i == 0) {
             x += 160;
             //% vil aktiveres på 0
@@ -51,8 +57,15 @@ function lagKalenderDagTekst(x, y, dagnummer) {
     return text
 }
 
-function lagKalenderDagTemperatur(x,y,i) {
+function lagKalenderDagTemperatur(x,y,temperatur) {
     //ta 4 numre fra hver dag, med 9 tall mellom seg
     //og finn gjennomsnitt, sett deretter som tall
-    console.log("hei");
+    let text = createSVGElement("text");
+    temperatur = parseInt(temperatur);
+    text.textContent = temperatur;
+    text.setAttribute("fill", "black");
+    text.setAttribute("class", "temperatur");
+    text.setAttribute("x",x);
+    text.setAttribute("y",y);
+    return text
 }
