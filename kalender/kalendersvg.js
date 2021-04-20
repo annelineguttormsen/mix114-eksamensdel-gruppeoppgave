@@ -51,6 +51,8 @@ function lagKalenderDagTekst(x, y, dagnummer) {
     return text
 }
 
-function lagKalenderDagTemperatur(x,y) {
+function lagKalenderDagTemperatur(x,y,i) {
+    //ta 4 numre fra hver dag, med 9 tall mellom seg
+    //og finn gjennomsnitt, sett deretter som tall
     console.log("hei");
 }
