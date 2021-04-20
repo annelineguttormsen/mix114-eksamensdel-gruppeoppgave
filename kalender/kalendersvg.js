@@ -12,20 +12,16 @@ function createSVGElement(tag) {
 }
 
 function lagKalender() {
-    console.log("lagkalender");
     //fordi det er 30 dager uansett måned, gå gjennom 30 ganger
-    //oppdater y hver gang, reset på 7
-    //oppdater x når 
     let x = 10;
     let y = 10;
-    for (let i = 0;i <= 30;i++) {
-        console.log("forløkke er på", i);
+    for (let i = 0;i < 30;i++) {
         kalenderElement.appendChild(lagKalenderDag(x, y));
+        kalenderElement.appendChild(lagKalenderDagTekst(x+10,y+20,i+1));
         if (i == 0) {
-            continue;
+            x += 160;
             //% vil aktiveres på 0
-        }
-        if (i % 7 == 0) {
+        } else if ((i+1)%7 == 0) {
             x = 10;
             y += 160;
         } else {
@@ -38,9 +34,23 @@ function lagKalenderDag(x, y) {
     let rect = createSVGElement("rect");
     rect.setAttribute("height", "150");
     rect.setAttribute("width", "150");
-    rect.setAttribute("fill", "lightblue");
-    console.log("lagkalenderdag, x og y er ", x, y);
+    rect.setAttribute("fill", "none");
+    rect.setAttribute("stroke", "#575757");
+    rect.setAttribute("stroke-width","1");
     rect.setAttribute("x", x);
     rect.setAttribute("y", y);
     return rect
+}
+
+function lagKalenderDagTekst(x, y, dagnummer) {
+    let text = createSVGElement("text");
+    text.textContent = dagnummer;
+    text.setAttribute("fill", "black");
+    text.setAttribute("x",x);
+    text.setAttribute("y",y);
+    return text
+}
+
+function lagKalenderDagTemperatur(x,y) {
+    console.log("hei");
 }
