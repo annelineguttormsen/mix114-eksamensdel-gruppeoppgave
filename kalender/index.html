@@ -5,6 +5,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            #wrap {
+                width:1130px;
+                display:block;
+                margin:0 auto;
+                font-family:Arial, Times New Roman, serif;
+                text-align: center;
+            }
             #kalender__svg {
                 margin:0 auto;
                 display:block;
@@ -12,16 +19,56 @@
                 height:810px;
                 border:1px solid #ccc;
                 border-radius:3px;
-                font-family:Arial, Times New Roman, serif;
             }
             .temperatur {
                 font-size:36px;
                 font-weight:700;
             }
+            @media only screen and (max-width:1130px) {
+                #wrap {
+                    width:100%;
+                }
+                #kalender__svg {
+                    width:100%;
+                    height:auto;
+                }
+            }
         </style>
     </head>
     <body>
-        <script src="kalendersvg.js" defer></script>
-        <svg width="1130" height="810" id="kalender__svg"></svg>
+        <div id="wrap">
+            <h1>Kalender</h1>
+            <form action="">
+                <!--input sted mellom 0-9999-->
+                <label for="sted">Sted</label>
+                <input type="number" name="sted" min="0" max="9999" maxlength="4">
+                <label for="aar">År</label>
+                <select id="aar" name="aar">
+                    <option value="671">671</option>
+                    <option value="672">672</option>
+                    <option value="673">673</option>
+                    <option value="674">674</option>
+                    <option value="675">675</option>
+                </select>
+                <label for="aar">Måned</label>
+                <select id="maaned" name="maaned">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <button>Generer kalender</button>
+            </form>
+            <script src="kalendersvg.js" defer></script>
+            <svg viewBox="0 0 1130 810" id="kalender__svg"></svg>
+        </div>
     </body>
 </html>

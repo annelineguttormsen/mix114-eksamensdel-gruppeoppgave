@@ -21,9 +21,12 @@ function lagKalender() {
     let x = 10;
     let y = 10;
     for (let i = 0;i < 30;i++) {
+        console.log(typeof kalenderData[i+1][9]);
+        let gjennomsnittTemp = (kalenderData[i+1][9]) + (kalenderData[i+1][18]);// + (kalenderData[i+1][27]) + (kalenderData[i+1][36]);
+        console.log("alle lagret sammen", gjennomsnittTemp);
         kalenderElement.appendChild(lagKalenderDag(x, y));
         kalenderElement.appendChild(lagKalenderDagTekst(x+10,y+20,i+1));
-        kalenderElement.appendChild(lagKalenderDagTemperatur(x+50,y+90,kalenderData[i+1][1] /*ENDRE VERDI HER*/));
+        kalenderElement.appendChild(lagKalenderDagTemperatur(x+50,y+90,gjennomsnittTemp));
         if (i == 0) {
             x += 160;
             //% vil aktiveres på 0
@@ -62,7 +65,7 @@ function lagKalenderDagTemperatur(x,y,temperatur) {
     //og finn gjennomsnitt, sett deretter som tall
     let text = createSVGElement("text");
     temperatur = parseInt(temperatur);
-    text.textContent = temperatur;
+    text.textContent = temperatur + "°C";
     text.setAttribute("fill", "black");
     text.setAttribute("class", "temperatur");
     text.setAttribute("x",x);
