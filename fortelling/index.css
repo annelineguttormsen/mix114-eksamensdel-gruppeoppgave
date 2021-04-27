@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Montserrat&display=swap');
 * {
     margin:0;
     padding:0;
@@ -9,8 +10,8 @@
     margin:0 auto;
     padding:50px 0px;
 }
-h1, h2, p {
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+h1, h2 {
+    font-family:"Megrim", Arial, sans-serif;
     margin:15px 0px;
 }
 h1 {
@@ -20,6 +21,7 @@ h2 {
     font-size:36px;
 }
 p, b, i, a {
+    font-family:Montserrat, Helvetica, sans-serif;
     font-size:18px;
     margin:10px 0px;
 }
