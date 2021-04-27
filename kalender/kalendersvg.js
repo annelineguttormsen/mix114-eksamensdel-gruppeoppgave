@@ -1,10 +1,17 @@
 let kalenderData = new Array();
 const kalenderElement = document.getElementById("kalender__svg");
+let inputNumber = document.getElementById("posisjon");
 
-/*sted 9999, år 671, 4 (april), i JSON*/
-fetch("https://trialmix.infomedia.uib.no/andregrader/9999/671/4/json")
-.then(response => response.json())
-.then((data) => {kalenderData = Object.entries(data); lagKalender()});
+
+function initiate() {
+    kalenderElement.innerHTML = "";
+    let url = "https://trialmix.infomedia.uib.no/andregrader/";
+    url = url + document.getElementById("posisjon").value + "/" + document.getElementById("aar").value + "/" + document.getElementById("maaned").value + "/json";
+    console.log(url);
+    fetch(url)
+    .then(response => response.json())
+    .then((data) => {kalenderData = Object.entries(data); lagKalender()});
+}
 
 function createSVGElement(tag) {
     let ns = "http://www.w3.org/2000/svg";
@@ -21,9 +28,10 @@ function lagKalender() {
     let x = 10;
     let y = 10;
     for (let i = 0;i < 30;i++) {
-        console.log(typeof kalenderData[i+1][9]);
-        let gjennomsnittTemp = (kalenderData[i+1][9]) + (kalenderData[i+1][18]);// + (kalenderData[i+1][27]) + (kalenderData[i+1][36]);
-        console.log("alle lagret sammen", gjennomsnittTemp);
+        //ta 4 numre fra hver dag, med 9 tall mellom seg
+        //og finn gjennomsnitt, sett deretter som tall
+        let gjennomsnittTemp = (kalenderData[i+1][8]) + (kalenderData[i+1][17]) + (kalenderData[i+1][26]) + (kalenderData[i+1][35]);
+        gjennomsnittTemp = gjennomsnittTemp/4;
         kalenderElement.appendChild(lagKalenderDag(x, y));
         kalenderElement.appendChild(lagKalenderDagTekst(x+10,y+20,i+1));
         kalenderElement.appendChild(lagKalenderDagTemperatur(x+50,y+90,gjennomsnittTemp));
@@ -61,8 +69,6 @@ function lagKalenderDagTekst(x, y, dagnummer) {
 }
 
 function lagKalenderDagTemperatur(x,y,temperatur) {
-    //ta 4 numre fra hver dag, med 9 tall mellom seg
-    //og finn gjennomsnitt, sett deretter som tall
     let text = createSVGElement("text");
     temperatur = parseInt(temperatur);
     text.textContent = temperatur + "°C";
@@ -71,4 +77,14 @@ function lagKalenderDagTemperatur(x,y,temperatur) {
     text.setAttribute("x",x);
     text.setAttribute("y",y);
     return text
+}
+
+function inputCheckNumber() {
+    if (inputNumber.value.length > inputNumber.maxLength) {
+        inputNumber.value = inputNumber.value.slice(0, inputNumber.maxLength)
+    }
+}
+
+window.onload = function() {
+    initiate();
 }

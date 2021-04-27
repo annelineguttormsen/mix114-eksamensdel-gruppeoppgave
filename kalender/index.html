@@ -38,35 +38,35 @@
     <body>
         <div id="wrap">
             <h1>Kalender</h1>
-            <form action="">
-                <!--input sted mellom 0-9999-->
-                <label for="sted">Sted</label>
-                <input type="number" name="sted" min="0" max="9999" maxlength="4">
-                <label for="aar">År</label>
-                <select id="aar" name="aar">
-                    <option value="671">671</option>
-                    <option value="672">672</option>
-                    <option value="673">673</option>
-                    <option value="674">674</option>
-                    <option value="675">675</option>
-                </select>
-                <label for="aar">Måned</label>
-                <select id="maaned" name="maaned">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-                <button>Generer kalender</button>
-            </form>
+            <!--input sted mellom 0-9999-->
+            <label for="posisjon">Posisjon (0-9999)</label>
+            <!--https://stackoverflow.com/questions/31706611/why-does-the-html-input-with-type-number-allow-the-letter-e-to-be-entered-in/31706796-->
+            <input oninput="inputCheckNumber()" onkeydown="javascript: return event.keyCode === 8 ||
+            event.keyCode === 46 ? true : !isNaN(Number(event.key))" type="number" min="0" max="9999" maxlength="4" value="0" name="posisjon" id="posisjon">
+            <label for="aar">År</label>
+            <select id="aar" name="aar">
+                <option value="671">671</option>
+                <option value="672">672</option>
+                <option value="673">673</option>
+                <option value="674">674</option>
+                <option value="675">675</option>
+            </select>
+            <label for="aar">Måned</label>
+            <select id="maaned" name="maaned">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <button onclick="initiate()">Generer kalender</button>
             <script src="kalendersvg.js" defer></script>
             <svg viewBox="0 0 1130 810" id="kalender__svg"></svg>
         </div>
