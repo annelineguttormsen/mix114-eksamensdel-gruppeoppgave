@@ -34,7 +34,7 @@ function lagKalender() {
         gjennomsnittTemp = gjennomsnittTemp/4;
         kalenderElement.appendChild(lagKalenderDag(x, y));
         kalenderElement.appendChild(lagKalenderDagTekst(x+10,y+20,i+1));
-        kalenderElement.appendChild(lagKalenderDagTemperatur(x+50,y+90,gjennomsnittTemp));
+        kalenderElement.appendChild(lagKalenderDagTemperatur(x+75,y+90,gjennomsnittTemp));
         if (i == 0) {
             x += 160;
             //% vil aktiveres på 0
@@ -76,6 +76,7 @@ function lagKalenderDagTemperatur(x,y,temperatur) {
     text.setAttribute("class", "temperatur");
     text.setAttribute("x",x);
     text.setAttribute("y",y);
+    text.setAttribute("text-anchor","middle");
     return text
 }
 
