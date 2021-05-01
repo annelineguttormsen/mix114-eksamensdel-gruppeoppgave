@@ -10,9 +10,11 @@
     margin:0 auto;
     padding:50px 0px;
 }
-h1, h2 {
+h1, h2, h3 {
     font-family:"Megrim", Arial, sans-serif;
     margin:15px 0px;
+    font-weight:700;
+    color:#575757;
 }
 h1 {
     font-size:48px;
@@ -20,10 +22,22 @@ h1 {
 h2 {
     font-size:36px;
 }
+h3 {
+    font-size:28px;
+}
 p, b, i, a {
     font-family:Montserrat, Helvetica, sans-serif;
     font-size:18px;
     margin:10px 0px;
+    color:#575757;
+}
+a {
+    font-weight:700;
+    text-decoration:none;
+    color:black;
+}
+a:visited {
+    //color:#9956e6;
 }
 button {
     outline:none;
