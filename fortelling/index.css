@@ -59,8 +59,15 @@ button {
     }
 }
 svg{
-    background:url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/eddc48ad-1f33-4c3d-87f6-7c0f39ed1e35/d16t47j-c1a9f75c-aa69-4478-a227-63b5f50f0383.jpg/v1/fill/w_1024,h_744,q_75,strp/alien_planet_by_frohickey_d16t47j-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03NDQiLCJwYXRoIjoiXC9mXC9lZGRjNDhhZC0xZjMzLTRjM2QtODdmNi03YzBmMzllZDFlMzVcL2QxNnQ0N2otYzFhOWY3NWMtYWE2OS00NDc4LWEyMjctNjNiNWY1MGYwMzgzLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.JFsO74dgmXCcYWclKm0PGHZzrMukh5g5p1k4IFIR_fc")no-repeat center;
+    //background:url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/eddc48ad-1f33-4c3d-87f6-7c0f39ed1e35/d16t47j-c1a9f75c-aa69-4478-a227-63b5f50f0383.jpg/v1/fill/w_1024,h_744,q_75,strp/alien_planet_by_frohickey_d16t47j-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03NDQiLCJwYXRoIjoiXC9mXC9lZGRjNDhhZC0xZjMzLTRjM2QtODdmNi03YzBmMzllZDFlMzVcL2QxNnQ0N2otYzFhOWY3NWMtYWE2OS00NDc4LWEyMjctNjNiNWY1MGYwMzgzLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.JFsO74dgmXCcYWclKm0PGHZzrMukh5g5p1k4IFIR_fc")no-repeat center;
+    background:tomato;
     background-size:100%;
     margin:15px 0px;
     width:100%;
+    height:500px;
+}
+@media only screen and (max-width:1040px) {
+    #body__wrap {
+        width:100%;
+    }
 }
