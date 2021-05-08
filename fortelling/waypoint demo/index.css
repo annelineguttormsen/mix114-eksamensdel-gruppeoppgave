@@ -14,6 +14,8 @@ body, html {
     position:fixed;
     z-index:3;
     background:#F94144;
+    transition:all .3s linear;
+    border-bottom-right-radius:3px;
 }
 .fortelling__wrap__tekst {
     width:100%;
