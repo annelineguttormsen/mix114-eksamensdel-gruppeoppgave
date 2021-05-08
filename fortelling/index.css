@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Megrim&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Megrim&display=swap');
 * {
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 #body__wrap {
     width:1040px;
@@ -26,7 +30,7 @@ h3 {
     font-size:28px;
 }
 p, b, i, a {
-    font-family:Montserrat, Helvetica, sans-serif;
+    font-family:Inter, Helvetica, sans-serif;
     font-size:18px;
     margin:10px 0px;
     color:#575757;
