@@ -8,12 +8,33 @@ body, html {
     height:100%;
     width:100%;
 }
+h1, h2, h3 {
+    font-family:"Megrim", Arial, sans-serif;
+    margin:15px 0px;
+    font-weight:700;
+    color:#575757;
+}
+h1 {
+    font-size:48px;
+}
+h2 {
+    font-size:36px;
+}
+h3 {
+    font-size:28px;
+}
+p, b, i, a {
+    font-family:Inter, Helvetica, sans-serif;
+    font-size:18px;
+    margin:10px 0px;
+    color:#323031;
+}
 #scroll__percent {
     width:0%;
     height:5px;
     position:fixed;
     z-index:3;
-    background:#F94144;
+    background:#43AA8B;
     transition:all .3s linear;
     border-bottom-right-radius:3px;
 }
@@ -43,8 +64,11 @@ body, html {
     top:20px;
     left:40px;
     box-sizing:border-box;
-    padding-right:100px;
+    padding-right:20%;
     overflow:auto;
+}
+.fortelling__section {
+    margin-top:300px;
 }
 .fortelling__wrap__bilde {
     width:100%;
