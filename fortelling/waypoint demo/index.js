@@ -17,9 +17,9 @@ for (let i=0;i<waypoints.length;i++) {
 
 console.log(waypointCoordinates);
 
-fortellingTekstScroll.on("scroll", fixArticlePercentage);
+fortellingTekstScroll.on("scroll", fortellingOnScroll);
 
-function fixArticlePercentage() {
+function fortellingOnScroll() {
   window.clearTimeout(isScrolling);
 
   //denne delen av funksjonen må "throttles"
@@ -42,7 +42,12 @@ function fixArticlePercentage() {
     }
     console.log(fortellingTekstScroll[0].scrollTop);
 
-  }, 30);
+  }, 20);
+
+  function changePicture(slideNumber) {
+
+  }
 }
+fortellingOnScroll();
 
 });
