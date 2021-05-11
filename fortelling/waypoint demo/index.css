@@ -7,12 +7,13 @@
 body, html {
     height:100%;
     width:100%;
+    background-color:#323031;
+
 }
 h1, h2, h3 {
     font-family:"Megrim", Arial, sans-serif;
     margin:15px 0px;
-    font-weight:700;
-    color:#323031;
+    color:#fff;
 }
 h1 {
     font-size:48px;
@@ -25,15 +26,16 @@ h3 {
 }
 p, b, i, a {
     font-family:Inter, Helvetica, sans-serif;
-    font-size:18px;
+    font-size:24px;
     margin:10px 0px;
-    color:#323031;
+    color:#fff;
+    line-height:1.5;
 }
 #scroll__percent {
     width:0%;
     height:5px;
     position:fixed;
-    background:#43AA8B;
+    background:#F94144;
     z-index:2;
     transition:all .3s linear;
     border-bottom-right-radius:3px;
@@ -42,7 +44,6 @@ p, b, i, a {
     width:40%;
     display:inline-block;
     box-sizing:border-box;
-    font-size:24px;
     padding:40px 20px;
     vertical-align:top;
 }
@@ -53,24 +54,22 @@ p, b, i, a {
 .fortelling__section {
     margin-bottom:700px;
 }
-.fortelling__section--waypoint {
-    background:red;
-}
 .fortelling__section--intro {
     margin-top:200px;
 }
 .fortelling__bilde {
     width:60%;
-    background:tan;
     z-index:1;
     display:inline-block;
     vertical-align:top;
 }
 .fortelling__bilde__section {
+    box-sizing:border-box;
+    padding:0px 0px 200px 50px;
 }
 .fortelling__bilde__section img {
     width:500px;
     position:-webkit-sticky;
     position:sticky;
-    top:20px;
+    top:50px;
 }

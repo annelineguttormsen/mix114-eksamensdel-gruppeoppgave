@@ -1,4 +1,4 @@
-$(function() {  
+window.onload = function() {  
 
 let articleScrollPercentageElement = document.getElementById("scroll__percent");
 let fortellingTekstScroll = document.getElementsByClassName("fortelling__tekst__scroll")[0];
@@ -19,6 +19,9 @@ for (let i=0;i<waypoints.length;i++) {
 
 //sett height på bildene til å korrespondere til hvor neste waypoint starter
 for (let pictureNumber = 0; pictureNumber<waypointCoordinates.length;pictureNumber++) {
+  //første bildet tar bare lengden fram til neste waypoint
+  //resten må regnes ut lengden basert på waypoints
+  //sin top og bunn
   switch (pictureNumber) {
     case 0:
       waypointBilder[pictureNumber].style.height = waypointCoordinates[pictureNumber].rectTop + "px";
@@ -46,4 +49,4 @@ function fortellingOnScroll() {
 }
 fortellingOnScroll();
 
-});
+}
