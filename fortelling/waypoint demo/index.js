@@ -1,23 +1,34 @@
 $(function() {  
 
-let articleScrollPercentageElement = $("#scroll__percent");
-let fortellingTekstScroll = $(".fortelling__tekst__scroll");
+let articleScrollPercentageElement = document.getElementById("scroll__percent");
+let fortellingTekstScroll = document.getElementsByClassName("fortelling__tekst__scroll")[0];
 
 let isScrolling;
-let currentPic = 0;
-let waypoints = document.getElementsByClassName("fortelling__section");
+let waypoints = document.getElementsByClassName("fortelling__section--waypoint");
 let waypointCoordinates = new Array();
+let waypointBilder = document.getElementsByClassName("fortelling__bilde__section");
 
 for (let i=0;i<waypoints.length;i++) {
   //få y attribute til waypoints (fra rect), legg til scrolltop i tilfelle 
   //dokumentet lastes inn mens fortellingstekstscroll allerede er scrollet
-  let rect = waypoints[i].getBoundingClientRect().y + fortellingTekstScroll[0].scrollTop;
-  waypointCoordinates.push(rect);
+  let rect = waypoints[i].getBoundingClientRect();
+  let rectTop = rect.top + window.scrollY;
+  let rectBottom = rect.bottom + window.scrollY;
+  waypointCoordinates.push({rectTop: rectTop, rectBottom: rectBottom});
 }
 
-console.log(waypointCoordinates);
+//sett height på bildene til å korrespondere til hvor neste waypoint starter
+for (let pictureNumber = 0; pictureNumber<waypointCoordinates.length;pictureNumber++) {
+  switch (pictureNumber) {
+    case 0:
+      waypointBilder[pictureNumber].style.height = waypointCoordinates[pictureNumber].rectTop + "px";
+      break;
+    default:
+      waypointBilder[pictureNumber].style.height = waypointCoordinates[pictureNumber].rectTop - waypointCoordinates[pictureNumber-1].rectTop + "px";
+  }
+}
 
-fortellingTekstScroll.on("scroll", fortellingOnScroll);
+window.addEventListener("scroll", fortellingOnScroll);
 
 function fortellingOnScroll() {
   window.clearTimeout(isScrolling);
@@ -28,25 +39,10 @@ function fortellingOnScroll() {
 	isScrolling = setTimeout(function() {
     //regn ut hvor langt i prosent bruker er i historien
     //sett lengden på linjen øverst med prosent
-    let heightWithoutViewport = fortellingTekstScroll[0].scrollHeight - fortellingTekstScroll[0].clientHeight;
-    let percent = (fortellingTekstScroll[0].scrollTop / heightWithoutViewport)*100;
-    articleScrollPercentageElement.css("width", (percent + "%"));
-
-    //finn ut om bruker har kommet til "spesifikk" paragraf
-    //deretter oppdater bilde hvis det ikke er currentPic
-    if (fortellingTekstScroll[0].scrollTop >= 0 && fortellingTekstScroll[0].scrollTop < waypointCoordinates[0]) {
-      console.log("bilde nr 1");
-    }
-    else if (fortellingTekstScroll[0].scrollTop > waypointCoordinates[0] && fortellingTekstScroll[0].scrollTop < waypointCoordinates[1]) {
-      console.log("bilde nr 2");
-    }
-    console.log(fortellingTekstScroll[0].scrollTop);
-
+    let heightWithoutViewport = document.body.scrollHeight - document.body.clientHeight;
+    let percent = (window.scrollY / heightWithoutViewport)*100;
+    articleScrollPercentageElement.style.width = (percent + "%");
   }, 20);
-
-  function changePicture(slideNumber) {
-
-  }
 }
 fortellingOnScroll();
 

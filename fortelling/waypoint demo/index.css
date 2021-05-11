@@ -40,44 +40,37 @@ p, b, i, a {
 }
 .fortelling__tekst {
     width:40%;
-    height:100%;
-    overflow:hidden;
-    position:fixed;
-    top:0;
+    display:inline-block;
     box-sizing:border-box;
     font-size:24px;
-    font-family:Inter;
-    padding:40px 0px;
+    padding:40px 20px;
+    vertical-align:top;
 }
 .fortelling__tekst__scroll {
     position:relative;
-    height:100%;
-    width:110%;
-    top:20px;
-    left:40px;
     box-sizing:border-box;
-    padding-right:20%;
-    overflow:auto;
 }
 .fortelling__section {
     margin-bottom:700px;
+}
+.fortelling__section--waypoint {
+    background:red;
 }
 .fortelling__section--intro {
     margin-top:200px;
 }
 .fortelling__bilde {
     width:60%;
-    height:100%;
     background:tan;
-    position:fixed;
     z-index:1;
-    top:0;
-    right:0;
-    overflow:hidden;
+    display:inline-block;
+    vertical-align:top;
 }
 .fortelling__bilde__section {
-    height:100%;
-    width:100%;
-    background:url("bonde.svg")no-repeat center;
-    background-size:60% 60%;
+}
+.fortelling__bilde__section img {
+    width:500px;
+    position:-webkit-sticky;
+    position:sticky;
+    top:20px;
 }
