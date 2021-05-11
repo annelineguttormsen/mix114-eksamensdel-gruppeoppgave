@@ -36,7 +36,7 @@ p, b, i, a {
     height:5px;
     position:fixed;
     background:#F94144;
-    z-index:2;
+    z-index:3;
     transition:all .3s linear;
     border-bottom-right-radius:3px;
 }
@@ -46,6 +46,8 @@ p, b, i, a {
     box-sizing:border-box;
     padding:40px 20px;
     vertical-align:top;
+    position:relative;
+    z-index:2;
 }
 .fortelling__tekst__scroll {
     position:relative;
@@ -57,19 +59,34 @@ p, b, i, a {
 .fortelling__section--intro {
     margin-top:200px;
 }
+.fortelling__section--waypoint {
+    background:teal;
+}
 .fortelling__bilde {
     width:60%;
     z-index:1;
+    position:fixed;
     display:inline-block;
     vertical-align:top;
 }
 .fortelling__bilde__section {
+    position:relative;
     box-sizing:border-box;
     padding:0px 0px 200px 50px;
 }
 .fortelling__bilde__section img {
+    position:absolute;
     width:500px;
-    position:-webkit-sticky;
-    position:sticky;
-    top:50px;
+    opacity:0;
+    transition:opacity .5s linear;
+}
+@media only screen and (max-width: 600px) {
+    .fortelling__bilde {
+        width:100%;
+        position:absolute;
+        left:0;
+    }
+    .fortelling__tekst {
+        width:100%;
+    }
 }

@@ -3,8 +3,9 @@ window.onload = function() {
 //elementer
 let articleScrollPercentageElement = document.getElementById("scroll__percent");
 let waypoints = document.getElementsByClassName("fortelling__section--waypoint");
-let waypointBilder = document.getElementsByClassName("fortelling__bilde__section");
+let waypointBilder = document.getElementsByClassName("fortelling__svg");
 
+let currentPic;
 let isResizing;
 let isScrolling;
 let waypointCoordinates = new Array();
@@ -17,20 +18,6 @@ function regnUtCoordinates() {
     let rectTop = rect.top + window.scrollY;
     let rectBottom = rect.bottom + window.scrollY;
     waypointCoordinates.push({rectTop: rectTop, rectBottom: rectBottom});
-  }
-
-  //sett height på bildene til å korrespondere til hvor neste waypoint starter
-  for (let pictureNumber = 0; pictureNumber<waypointCoordinates.length;pictureNumber++) {
-    //første bildet tar bare lengden fram til neste waypoint
-    //resten må regnes ut lengden basert på waypoints
-    //sin top og bunn
-    switch (pictureNumber) {
-      case 0:
-        waypointBilder[pictureNumber].style.height = waypointCoordinates[pictureNumber].rectTop + "px";
-        break;
-      default:
-        waypointBilder[pictureNumber].style.height = waypointCoordinates[pictureNumber].rectTop - waypointCoordinates[pictureNumber-1].rectTop + "px";
-    }
   }
 }
 
@@ -48,7 +35,32 @@ function fortellingOnScroll() {
     let heightWithoutViewport = document.body.scrollHeight - document.body.clientHeight;
     let percent = (window.scrollY / heightWithoutViewport)*100;
     articleScrollPercentageElement.style.width = (percent + "%");
+
+    let oldPic = currentPic;
+
+    if (oldPic != currentPictureNumber()) {
+      waypointBilder[oldPic].style.opacity = "0";
+      waypointBilder[currentPictureNumber()].style.opacity = "1";
+    }
   }, 20);
+}
+
+function currentPictureNumber() {
+  let currentWindowYPos = window.scrollY + window.innerHeight;
+  let returnValue;
+  if (currentWindowYPos >= 0 && currentWindowYPos < waypointCoordinates[0].rectTop) {
+    currentPic = 0;
+  }
+  else if (currentWindowYPos > waypointCoordinates[0].rectTop && currentWindowYPos < waypointCoordinates[1].rectTop) {
+    currentPic = 1;
+  }
+  else if (currentWindowYPos > waypointCoordinates[1].rectTop && currentWindowYPos < waypointCoordinates[2].rectTop) {
+    currentPic = 2;
+  }
+  else if (currentWindowYPos > waypointCoordinates[2].rectTop && currentWindowYPos < waypointCoordinates[3].rectTop) {
+    currentPic = 3;
+  }
+  return currentPic;
 }
 
 window.addEventListener("resize", resizeCalculateCoords);
@@ -60,12 +72,13 @@ function resizeCalculateCoords() {
   window.clearTimeout(isResizing);
 
   isResizing = setTimeout(function() {
-    console.log("resize");
     waypointCoordinates = [];
     regnUtCoordinates();
   }, 30);
 }
 
 regnUtCoordinates();
+currentPictureNumber();
 fortellingOnScroll();
+waypointBilder[currentPic].style.opacity = "1";
 }
