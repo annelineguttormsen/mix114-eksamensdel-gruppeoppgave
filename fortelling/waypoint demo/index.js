@@ -49,7 +49,6 @@ function fortellingOnScroll() {
 
 function currentPictureNumber() {
   let currentWindowYPos = window.scrollY + window.innerHeight;
-  let returnValue;
   if (currentWindowYPos >= 0 && currentWindowYPos < waypointCoordinates[0].rectTop) {
     currentPic = 0;
   }
@@ -62,6 +61,19 @@ function currentPictureNumber() {
   else if (currentWindowYPos > waypointCoordinates[2].rectTop && currentWindowYPos < waypointCoordinates[3].rectTop) {
     currentPic = 3;
   }
+  else if (currentWindowYPos > waypointCoordinates[3].rectTop && currentWindowYPos < waypointCoordinates[4].rectTop) {
+    currentPic = 4;
+  }
+  else if (currentWindowYPos > waypointCoordinates[4].rectTop && currentWindowYPos < waypointCoordinates[5].rectTop) {
+    currentPic = 5;
+  }
+  else if (currentWindowYPos > waypointCoordinates[5].rectTop && currentWindowYPos < waypointCoordinates[6].rectTop) {
+    currentPic = 6;
+  }
+  else if (currentWindowYPos > waypointCoordinates[6].rectTop && currentWindowYPos < waypointCoordinates[7].rectTop) {
+    currentPic = 7;
+  }
+
   return currentPic;
 }
 
