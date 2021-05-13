@@ -11,10 +11,6 @@ body, html {
     height:100%;
     width:100%;
 }
-html {
-    //background:url("media/skog.png")no-repeat center fixed;
-    background-size:cover;
-}
 h1, h2, h3 {
     font-family:"Kompakt", Arial, sans-serif;
     margin:15px 0px;
@@ -86,6 +82,23 @@ p, b, i, a, button {
         opacity: 0;
     }
 }
+#dynamic__background {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    top:0;
+    position:fixed;
+    z-index:-3;
+    background:#323031;
+}
+.dynamic__background__image {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity .5s linear;
+}
 #scroll__percent {
     width:0%;
     height:7px;
@@ -141,6 +154,9 @@ p, b, i, a, button {
 }
 .fortelling__section--waypoint {
     background:teal;
+}
+.fortelling__section--bg {
+    background:lean;
 }
 .fortelling__bilde {
     width:60%;

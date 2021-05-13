@@ -3,25 +3,18 @@ window.onload = function() {
 //elementer
 let articleScrollPercentageElement = document.getElementById("scroll__percent");
 let waypoints = document.getElementsByClassName("fortelling__section--waypoint");
+let waypointsBackground = document.getElementsByClassName("fortelling__section--bg");
+let dynamicBackgroundBilder = document.getElementsByClassName("dynamic__background__image");
 let waypointBilder = document.getElementsByClassName("fortelling__svg");
 let jumbotronElement = document.getElementById("jumbotron");
 let startKnapp = document.getElementById("start_knapp");
 
 let currentPic;
+let currentBG;
 let isResizing;
 let isScrolling;
 let waypointCoordinates = new Array();
-
-//bakgrunnsbilder
-let skogBG;
-
-//preload bakgrunnsbilder
-if (document.images) {
-  skogBG = new Image();
-
-  skogBG.src = "media/skog.png";
-}
-document.body.style.background = "url(" + skogBG.src + ")no-repeat center fixed";
+let waypointBGCoordinates = new Array();
 
 function regnUtCoordinates() {
   for (let i=0;i<waypoints.length;i++) {
@@ -30,6 +23,11 @@ function regnUtCoordinates() {
     let rect = waypoints[i].getBoundingClientRect();
     let rectTop = rect.top + window.scrollY;
     waypointCoordinates.push(rectTop);
+  }
+  for (let x=0;x<waypointsBackground.length;x++) {
+    let rect = waypointsBackground[x].getBoundingClientRect();
+    let rectTop = rect.top + window.scrollY;
+    waypointBGCoordinates.push(rectTop);
   }
 }
 
@@ -49,13 +47,21 @@ function fortellingOnScroll() {
     articleScrollPercentageElement.style.width = (percent + "%");
 
     let oldPic = currentPic;
+    let oldBG = currentBG;
 
     if (oldPic != currentPictureNumber()) {
       waypointBilder[oldPic].style.opacity = "0";
       waypointBilder[currentPictureNumber()].style.opacity = "1";
     }
+    if (oldBG != currentBGNumber()) {
+      dynamicBackgroundBilder[oldBG].style.opacity = "0";
+      dynamicBackgroundBilder[currentBG].style.opacity = "1";
+    }
+    console.log(currentBG);
   }, 20);
 }
+console.log(dynamicBackgroundBilder);
+
 
 function currentPictureNumber() {
   let currentWindowYPos = window.scrollY + window.innerHeight;
@@ -70,6 +76,20 @@ function currentPictureNumber() {
     }
   }
   return currentPic;
+}
+function currentBGNumber() {
+  let currentWindowYPos = window.scrollY + window.innerHeight;
+  if (currentWindowYPos >= 0 && currentWindowYPos < waypointBGCoordinates[0]) {
+    currentBG = 0;
+  } else {
+    for (let waypointsNumber = 0; waypointsNumber < waypointBGCoordinates.length; waypointsNumber++) {
+      if (currentWindowYPos > waypointBGCoordinates[waypointsNumber] && currentWindowYPos < waypointBGCoordinates[waypointsNumber+1]) {
+        currentBG = waypointsNumber + 1;
+        break;
+      }
+    }
+  }
+  return currentBG;
 }
 
 window.addEventListener("resize", resizeCalculateCoords);
@@ -94,6 +114,7 @@ startKnapp.addEventListener("click", removeJumbotron);
 
 regnUtCoordinates();
 currentPictureNumber();
+currentBGNumber();
 fortellingOnScroll();
 waypointBilder[currentPic].style.opacity = "1";
 }
