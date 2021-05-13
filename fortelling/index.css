@@ -1,24 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter&family=Megrim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@font-face {
+    font-family:"Kompakt";
+    src:url("Kompakt.ttf") format("truetype");
+}
 * {
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
-::-webkit-scrollbar {
-    width: 0px;
-    background: transparent; /* make scrollbar transparent */
-}
-#body__wrap {
-    width:1040px;
-    display:block;
-    margin:0 auto;
-    padding:50px 0px;
+body, html {
+    height:100%;
+    width:100%;
 }
 h1, h2, h3 {
-    font-family:"Megrim", Arial, sans-serif;
+    font-family:"Kompakt", Arial, sans-serif;
     margin:15px 0px;
-    font-weight:700;
-    color:#575757;
+    color:#fff;
 }
 h1 {
     font-size:48px;
@@ -29,49 +25,194 @@ h2 {
 h3 {
     font-size:28px;
 }
-p, b, i, a {
+p, b, i, a, button {
     font-family:Inter, Helvetica, sans-serif;
-    font-size:18px;
+    font-size:16px;
     margin:10px 0px;
-    color:#575757;
+    color:#fff;
+    line-height:2;
 }
-a {
+.main__element {
+    padding:40px;
+    box-sizing:border-box;
+}
+#start_knapp {
+    background: #F9C74F;
+    color:#000;
     font-weight:700;
+    border: none;
+    border-radius: 1000px;
+    position: relative;
+    z-index:1;
+    transition: background-color 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    margin-top:30px;
+    margin-bottom:50px;
+    padding: 10px 30px;
+}
+#start_knapp a {
     text-decoration:none;
-    color:black;
+    color:#323031;
 }
-a:visited {
-    //color:#9956e6;
+#start_knapp:hover {
+    background: #BB953B;
 }
-button {
-    outline:none;
-    background:lightblue;
-    border:none;
-    border-radius:3px;
-    padding:10px 15px;
-    font-weight:700;
+#start_knapp::after {
+    content: '';
+    width: 30px; height: 30px;
+    border-radius: 100%;
+    border: 6px solid #F9C74F;
+    position: absolute;
+    z-index:-1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 5s infinite;
 }
-#sky {
-    animation:framogtilbake 5s linear infinite;
-}
-@keyframes framogtilbake {
-    0%, 100% {
-        transform:translate(0px,0px);
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
     }
-    50% {
-        transform:translate(300px, 0px);
+    100% {
+        width: 150px;
+        height: 150px;
+        opacity: 0;
     }
 }
-svg{
-    //background:url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/eddc48ad-1f33-4c3d-87f6-7c0f39ed1e35/d16t47j-c1a9f75c-aa69-4478-a227-63b5f50f0383.jpg/v1/fill/w_1024,h_744,q_75,strp/alien_planet_by_frohickey_d16t47j-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD03NDQiLCJwYXRoIjoiXC9mXC9lZGRjNDhhZC0xZjMzLTRjM2QtODdmNi03YzBmMzllZDFlMzVcL2QxNnQ0N2otYzFhOWY3NWMtYWE2OS00NDc4LWEyMjctNjNiNWY1MGYwMzgzLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.JFsO74dgmXCcYWclKm0PGHZzrMukh5g5p1k4IFIR_fc")no-repeat center;
-    background:tomato;
-    background-size:100%;
-    margin:15px 0px;
+#dynamic__background {
     width:100%;
-    height:500px;
+    height:100%;
+    overflow:hidden;
+    top:0;
+    position:fixed;
+    z-index:-3;
+    background:#323031;
 }
-@media only screen and (max-width:1040px) {
-    #body__wrap {
+.dynamic__background__image {
+    position:absolute;
+    top:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition:opacity .5s linear;
+}
+#scroll__percent {
+    width:0%;
+    height:7px;
+    position:fixed;
+    top:0;
+    background:#F94144;
+    z-index:3;
+    transition:all .3s linear;
+    border-bottom-right-radius:3px;
+}
+#jumbotron {
+    width:100%;
+    height:100%;
+    overflow-y:auto;
+    z-index:3;
+    top:0;
+    position:fixed;
+    background:#323031;
+    text-align:center;
+}
+#jumbotron p {
+    width:600px;
+    margin:0 auto;
+}
+#planet__svg {
+    width:500px;
+    animation:spinn 50s linear infinite;
+}
+@keyframes spinn {
+    0% {
+        transform:rotate(360deg);
+    }
+    100% {
+        transform:rotate(0deg);
+    }
+}
+.fortelling__tekst {
+    width:40%;
+    display:inline-block;
+    vertical-align:top;
+    position:relative;
+    z-index:2;
+}
+.fortelling__tekst__scroll {
+    position:relative;
+    box-sizing:border-box;
+}
+.fortelling__section {
+    margin-bottom:700px;
+}
+.fortelling__section--intro {
+    margin-top:200px;
+}
+.fortelling__section--waypoint {
+    background:teal;
+}
+.fortelling__section--bg {
+    background:lean;
+}
+.fortelling__bilde {
+    width:60%;
+    vertical-align:top;
+    display:inline-block;
+    height:100%;
+    position:fixed;
+    z-index:1;
+}
+.fortelling__bilde__section {
+    position:relative;
+    box-sizing:border-box;
+    height:100%;
+    width:100%;
+}
+.fortelling__svg {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:80%;
+    opacity:0;
+    box-sizing:border-box;
+    transition:opacity .5s linear;
+}
+@media only screen and (max-width: 800px) {
+    .fortelling__bilde {
+        width:100%;
+        left:0;
+    }
+    .fortelling__svg {
+        padding:50px 20px;
+    }
+    .fortelling__tekst {
+        width:100%;
+        color:#323031;
+    }
+    .fortelling__section {
+        padding:10px 30px;
+        background:#fff;
+    }
+    p, a, b, i, h1, h2, h3 {
+        color:#323031;
+    }
+    #jumbotron h1, #jumbotron p {
+        color:white;
+    }
+    #jumbotron p, #planet__svg {
+        width:80%;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .main__element {
+        padding:20px;
+    }
+    #jumbotron p {
         width:100%;
     }
 }
