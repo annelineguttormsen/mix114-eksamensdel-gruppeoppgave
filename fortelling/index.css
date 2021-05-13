@@ -99,6 +99,22 @@ p, b, i, a, button {
     opacity:0;
     transition:opacity .5s linear;
 }
+.dynamic__background__image--intro {
+    background:url("media/intro.png")no-repeat center fixed;
+    background-size:cover;
+}
+.dynamic__background__image--skog {
+    background:url("media/skog.png")no-repeat center fixed;
+    background-size:cover;
+}
+.dynamic__background__image--skogregn {
+    background:url("media/skog_regn.png")no-repeat center fixed;
+    background-size:cover;
+}
+.dynamic__background__image--skogsol {
+    background:url("media/skog_sol.png") no-repeat center fixed;
+    background-size:cover;
+}
 #scroll__percent {
     width:0%;
     height:7px;
@@ -116,7 +132,7 @@ p, b, i, a, button {
     z-index:3;
     top:0;
     position:fixed;
-    background:#323031;
+    background:#1f1e1e;
     text-align:center;
 }
 #jumbotron p {
@@ -149,14 +165,14 @@ p, b, i, a, button {
 .fortelling__section {
     margin-bottom:700px;
 }
+.fortelling__section p {
+    text-shadow:0px 0px 5px black;
+}
 .fortelling__section--intro {
     margin-top:200px;
 }
-.fortelling__section--waypoint {
-    background:teal;
-}
-.fortelling__section--bg {
-    background:lean;
+.fortelling__section--outro {
+    margin-bottom:50px;
 }
 .fortelling__bilde {
     width:60%;
@@ -198,6 +214,9 @@ p, b, i, a, button {
         padding:10px 30px;
         background:#fff;
     }
+    .fortelling__section p {
+        text-shadow:none;
+    }
     p, a, b, i, h1, h2, h3 {
         color:#323031;
     }
@@ -214,5 +233,13 @@ p, b, i, a, button {
     }
     #jumbotron p {
         width:100%;
+    }
+    .fortelling__section--intro {
+        margin-top:50px;
+    }
+    .fortelling__svg {
+        padding:0px 5px;
+        width:100%;
+        height:auto;
     }
 }

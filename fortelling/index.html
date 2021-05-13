@@ -10,16 +10,17 @@
 
 <body>
     <div id="dynamic__background">
-        <img class="dynamic__background__image" src="media/intro.png" alt="Tomt bilde">
-        <img class="dynamic__background__image" src="media/skog.png" alt="Mørk skog">
-        <img class="dynamic__background__image" src="media/skog_regn.png" alt="Regn som faller ned i en mørk skog">
-        <img class="dynamic__background__image" src="media/skog_sol.png" alt="En skog som lyses opp av sol, med blomster">
+        <div class="dynamic__background__image dynamic__background__image--intro"></div>
+        <div class="dynamic__background__image dynamic__background__image--skog"></div>
+        <div class="dynamic__background__image dynamic__background__image--skogregn"></div>
+        <div class="dynamic__background__image dynamic__background__image--skogsol"></div>
+        <div class="dynamic__background__image dynamic__background__image--skog"></div>
     </div>
     <div id="scroll__percent"></div>
     <div id="jumbotron" class="main__element">
         <img src="media/planet.svg" alt="Planeten Ufroopya" id="planet__svg">
         <h1>Hvorfor er været på Ufroopya slik det er?</h1>
-        <p>Været på Ufroopya har gjennom flere generasjoner vært brått skiftende og uforutsigbart. Men det finnes en forklaring på hvorfor. Utforsk historien til den fjerne planeten i denne scrollytellingen</p>
+        <p>Været på Ufroopya har gjennom flere generasjoner vært brått skiftende og uforutsigbart. Men det finnes en forklaring på hvorfor. Utforsk historien til den fjerne planeten i denne scrollytellingen.</p>
         <button type="button" id="start_knapp"><a href="#">Les mer om Ufroopya</a></button>
     </div>
         <div class="fortelling__tekst main__element">
@@ -46,7 +47,7 @@
                 <div class="fortelling__section fortelling__section--bg">
                     <p>Videre inne i skogen oppdaget de en gigantisk sirkel av lys som skinte ned på den. Brått ga det farge til omgivelsene rundt, og ga mennene en underlig varme. Etter å ha varmet seg under lyset en liten stund, gikk de videre inn i skogen.</p>
                 </div>
-                <div class="fortelling__section fortelling__section--waypoint">
+                <div class="fortelling__section fortelling__section--waypoint fortelling__section--bg">
                     <p>– Se her! sier forskeren og peker foran seg. Fremfor seg befinner det seg en enorm tåkeklump. En ukjent kraft gjorde slik at trærne rundt klumpen blåste i alle retninger.  Forskeren hadde oppdaget mye forskjellig opp gjennom årene, men dette var noe han ikke kunne sette fingeren på.</p>
                 </div>
                 <div class="fortelling__section fortelling__section--waypoint">
@@ -58,7 +59,7 @@
                 <div class="fortelling__section fortelling__section--waypoint">
                     <p>Plutselig ser de en skummel skikkelse, ulikt noe de hadde sett før. Inne i hulen befant det seg nemlig en av de gamle værgudene. Guden forklarte dem at han ikke nå ikke ønsket å ha kontroll over solen, skyene eller regnet. Fordi han ikke lenger ønsket å være en værgud, gruppen fikk deretter muligheten til å velge ut et værelement som de fikk beholde.</p>
                 </div>
-                <div class="fortelling__section">
+                <div class="fortelling__section fortelling__section--waypoint">
                     <p>Forskeren ba om skyer fordi han interesserte seg i dem og ønsket å studere dem videre. Dikteren ba om sol fordi den ga ifra seg lys og den ga han en glede som han kunne bruke til å skrive. Bonden ba om regn, slik at han kunne vanne frøene sine og få samme vakre planter som de han så i skogen.</p>
                 </div>
                 <div class="fortelling__section fortelling__section--waypoint">
@@ -71,9 +72,9 @@
                     <p>Forskeren ga opp og dikteren bestemte seg for å gi det et forsøk. Han ba til solen om å gradvis forandre på temperaturen der plantene vokste. Solen leverte først et svakt lys med lite varme, men det ble varmere og varmere for hvert sekund som gikk. Plantene begynte så å falle sammen, en etter en, til det bare var to igjen.</p>
                 </div>
                 <div class="fortelling__section fortelling__section--waypoint">
-                    <p>Oppgitt kronet bonden dikteren som den sterkeste av de tre, samtidig som han sverget hevn på dem begge fordi hadde skadet de dyrebare plantene</p>
+                    <p>Oppgitt kronet bonden dikteren som den sterkeste av de tre, samtidig som han sverget hevn på dem begge fordi hadde skadet de dyrebare plantene.</p>
                 </div>
-                <div class="fortelling__section fortelling__section--waypoint">
+                <div class="fortelling__section fortelling__section--outro fortelling__section--waypoint">
                     <p>Værguden observerte konflikten, og så hvordan denne fremhevet det verste i de tre mennene. Han innså at dersom en av dem fikk makten alene til å kontrollere et element, kunne i verste fall Ufroopya stå overfor en ny og grusom krig. Dermed bestemte han seg for å gi dem alle muligheten til å styre sitt element, på én betingelse. De måtte sverge på at de alltid tok hensyn til hverandre og styrte været etter alles beste interesser. Mennene sa seg enige, og jublet lykkelige over kreftene de hadde fått tildelt. I realiteten ble det dog vanskeligere å styre været enn antatt. Mennene ble uenige om hva som var beste interesse, og mente at deres element var høyst nødvendig. Som et resultat, kunne været bli veldig ustabilt og skiftende. Dette er historien bak været i Ufroopya i dag, og grunnen bak hvorfor været alltid skifter seg fra; regn, til sol og overskyet i løpet av samme dag.</p>
                     <h2>Slutt</h2>
                 </div>
@@ -87,6 +88,7 @@
                     <img class="fortelling__svg" src="media/vind.svg" alt="Vind i en skog">
                     <img class="fortelling__svg" src="media/tomhule.svg" alt="En tom hule">
                     <img class="fortelling__svg" src="media/hule.svg" alt="Værguden Zabo i en hule">
+                    <img class="fortelling__svg" src="media/velger_elementer.svg" alt="Bonden, forfatteren og forskeren sier sine bønner">
                     <img class="fortelling__svg" src="media/krangling.svg" alt="Bonden, forfatteren og forskeren krangler">
                     <img class="fortelling__svg" src="media/vind_vs_planter.svg" alt="En vind som prøver å blåse vekk planter">
                     <img class="fortelling__svg" src="media/sol_vs_planter.svg" alt="Sol som visner vekk planter">

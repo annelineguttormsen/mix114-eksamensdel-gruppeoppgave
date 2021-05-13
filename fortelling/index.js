@@ -57,10 +57,8 @@ function fortellingOnScroll() {
       dynamicBackgroundBilder[oldBG].style.opacity = "0";
       dynamicBackgroundBilder[currentBG].style.opacity = "1";
     }
-    console.log(currentBG);
   }, 20);
 }
-console.log(dynamicBackgroundBilder);
 
 
 function currentPictureNumber() {
@@ -81,11 +79,16 @@ function currentBGNumber() {
   let currentWindowYPos = window.scrollY + window.innerHeight;
   if (currentWindowYPos >= 0 && currentWindowYPos < waypointBGCoordinates[0]) {
     currentBG = 0;
-  } else {
+  } 
+  else {
     for (let waypointsNumber = 0; waypointsNumber < waypointBGCoordinates.length; waypointsNumber++) {
       if (currentWindowYPos > waypointBGCoordinates[waypointsNumber] && currentWindowYPos < waypointBGCoordinates[waypointsNumber+1]) {
         currentBG = waypointsNumber + 1;
         break;
+      }
+      //hvis ingen er true, er bruker på slutten av siden
+      else {
+        currentBG = waypointBGCoordinates.length;
       }
     }
   }
@@ -102,6 +105,7 @@ function resizeCalculateCoords() {
 
   isResizing = setTimeout(function() {
     waypointCoordinates = [];
+    waypointBGCoordinates = [];
     regnUtCoordinates();
   }, 30);
 }
@@ -117,4 +121,5 @@ currentPictureNumber();
 currentBGNumber();
 fortellingOnScroll();
 waypointBilder[currentPic].style.opacity = "1";
+dynamicBackgroundBilder[currentBG].style.opacity = "1";
 }
