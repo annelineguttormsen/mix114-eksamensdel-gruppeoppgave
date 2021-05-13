@@ -18,8 +18,7 @@ function regnUtCoordinates() {
     //dokumentet lastes inn mens fortellingstekstscroll allerede er scrollet
     let rect = waypoints[i].getBoundingClientRect();
     let rectTop = rect.top + window.scrollY;
-    let rectBottom = rect.bottom + window.scrollY;
-    waypointCoordinates.push({rectTop: rectTop, rectBottom: rectBottom});
+    waypointCoordinates.push(rectTop);
   }
 }
 
@@ -49,31 +48,16 @@ function fortellingOnScroll() {
 
 function currentPictureNumber() {
   let currentWindowYPos = window.scrollY + window.innerHeight;
-  if (currentWindowYPos >= 0 && currentWindowYPos < waypointCoordinates[0].rectTop) {
+  if (currentWindowYPos >= 0 && currentWindowYPos < waypointCoordinates[0]) {
     currentPic = 0;
+  } else {
+    for (let waypointsNumber = 0; waypointsNumber < waypointCoordinates.length; waypointsNumber++) {
+      if (currentWindowYPos > waypointCoordinates[waypointsNumber] && currentWindowYPos < waypointCoordinates[waypointsNumber+1]) {
+        currentPic = waypointsNumber + 1;
+        break;
+      }
+    }
   }
-  else if (currentWindowYPos > waypointCoordinates[0].rectTop && currentWindowYPos < waypointCoordinates[1].rectTop) {
-    currentPic = 1;
-  }
-  else if (currentWindowYPos > waypointCoordinates[1].rectTop && currentWindowYPos < waypointCoordinates[2].rectTop) {
-    currentPic = 2;
-  }
-  else if (currentWindowYPos > waypointCoordinates[2].rectTop && currentWindowYPos < waypointCoordinates[3].rectTop) {
-    currentPic = 3;
-  }
-  else if (currentWindowYPos > waypointCoordinates[3].rectTop && currentWindowYPos < waypointCoordinates[4].rectTop) {
-    currentPic = 4;
-  }
-  else if (currentWindowYPos > waypointCoordinates[4].rectTop && currentWindowYPos < waypointCoordinates[5].rectTop) {
-    currentPic = 5;
-  }
-  else if (currentWindowYPos > waypointCoordinates[5].rectTop && currentWindowYPos < waypointCoordinates[6].rectTop) {
-    currentPic = 6;
-  }
-  else if (currentWindowYPos > waypointCoordinates[6].rectTop && currentWindowYPos < waypointCoordinates[7].rectTop) {
-    currentPic = 7;
-  }
-
   return currentPic;
 }
 
