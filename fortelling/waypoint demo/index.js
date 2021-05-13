@@ -4,6 +4,8 @@ window.onload = function() {
 let articleScrollPercentageElement = document.getElementById("scroll__percent");
 let waypoints = document.getElementsByClassName("fortelling__section--waypoint");
 let waypointBilder = document.getElementsByClassName("fortelling__svg");
+let jumbotronElement = document.getElementById("jumbotron");
+let startKnapp = document.getElementById("start_knapp");
 
 let currentPic;
 let isResizing;
@@ -76,6 +78,12 @@ function resizeCalculateCoords() {
     regnUtCoordinates();
   }, 30);
 }
+
+function removeJumbotron() {
+  jumbotronElement.style.display = "none";
+}
+
+startKnapp.addEventListener("click", removeJumbotron);
 
 regnUtCoordinates();
 currentPictureNumber();

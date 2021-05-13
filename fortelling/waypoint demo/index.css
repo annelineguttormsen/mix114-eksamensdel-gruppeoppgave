@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Megrim&display=swap');
-
+@font-face {
+    font-family:"Kompakt";
+    src:url("Kompakt.ttf") format("truetype");
+}
 * {
     margin:0;
     padding:0;
@@ -8,10 +11,9 @@ body, html {
     height:100%;
     width:100%;
     background-color:#323031;
-
 }
 h1, h2, h3 {
-    font-family:"Megrim", Arial, sans-serif;
+    font-family:"Kompakt", Arial, sans-serif;
     margin:15px 0px;
     color:#fff;
 }
@@ -24,27 +26,102 @@ h2 {
 h3 {
     font-size:28px;
 }
-p, b, i, a {
+p, b, i, a, button {
     font-family:Inter, Helvetica, sans-serif;
-    font-size:24px;
+    font-size:16px;
     margin:10px 0px;
     color:#fff;
-    line-height:1.5;
+    line-height:2;
+}
+.main__element {
+    padding:40px;
+    box-sizing:border-box;
+}
+#start_knapp {
+    background: #F9C74F;
+    color:#000;
+    font-weight:700;
+    border: none;
+    border-radius: 1000px;
+    position: relative;
+    z-index:1;
+    transition: background-color 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    margin-top:30px;
+    margin-bottom:50px;
+    padding: 10px 30px;
+}
+#start_knapp a {
+    text-decoration:none;
+    color:#323031;
+}
+#start_knapp:hover {
+    background: #BB953B;
+}
+#start_knapp::after {
+    content: '';
+    width: 30px; height: 30px;
+    border-radius: 100%;
+    border: 6px solid #F9C74F;
+    position: absolute;
+    z-index:-1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 5s infinite;
+}
+@keyframes ring {
+    0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+    }
+    100% {
+        width: 150px;
+        height: 150px;
+        opacity: 0;
+    }
 }
 #scroll__percent {
     width:0%;
-    height:5px;
+    height:7px;
     position:fixed;
+    top:0;
     background:#F94144;
     z-index:3;
     transition:all .3s linear;
     border-bottom-right-radius:3px;
 }
+#jumbotron {
+    width:100%;
+    height:100%;
+    overflow-y:auto;
+    z-index:3;
+    top:0;
+    position:fixed;
+    background:#323031;
+    text-align:center;
+}
+#jumbotron p {
+    width:600px;
+    margin:0 auto;
+}
+#planet__svg {
+    width:500px;
+    animation:spinn 50s linear infinite;
+}
+@keyframes spinn {
+    0% {
+        transform:rotate(360deg);
+    }
+    100% {
+        transform:rotate(0deg);
+    }
+}
 .fortelling__tekst {
     width:40%;
     display:inline-block;
-    box-sizing:border-box;
-    padding:40px 20px;
     vertical-align:top;
     position:relative;
     z-index:2;
@@ -64,29 +141,57 @@ p, b, i, a {
 }
 .fortelling__bilde {
     width:60%;
-    z-index:1;
-    position:fixed;
-    display:inline-block;
     vertical-align:top;
+    position:fixed;
+    z-index:1;
+    display:inline-block;
 }
 .fortelling__bilde__section {
     position:relative;
     box-sizing:border-box;
-    padding:0px 0px 200px 50px;
 }
-.fortelling__bilde__section img {
+.fortelling__svg {
     position:absolute;
-    width:500px;
+    display:block;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:600px;
     opacity:0;
+    box-sizing:border-box;
     transition:opacity .5s linear;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .fortelling__bilde {
         width:100%;
-        position:absolute;
         left:0;
     }
+    .fortelling__svg {
+        padding:50px 20px;
+    }
     .fortelling__tekst {
+        width:100%;
+        color:#323031;
+    }
+    .fortelling__section {
+        padding:10px 30px;
+        background:#fff;
+    }
+    p, a, b, i, h1, h2, h3 {
+        color:#323031;
+    }
+    #jumbotron h1, #jumbotron p {
+        color:white;
+    }
+    #jumbotron p, #planet__svg {
+        width:80%;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .main__element {
+        padding:20px;
+    }
+    #jumbotron p {
         width:100%;
     }
 }

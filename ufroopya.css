@@ -1,5 +1,5 @@
 body{
-background-image: url('ufroopya1.svg');
+  background-image: url('ufroopya1.svg');
 }
 
 h1 {
@@ -46,7 +46,7 @@ p {
   outline: none;
   position: relative;
   padding: 10px;
-  }
+}
 
 #start_knapp:hover {
   background: #BB953B;
