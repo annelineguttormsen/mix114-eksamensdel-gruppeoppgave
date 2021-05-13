@@ -12,6 +12,17 @@ let isResizing;
 let isScrolling;
 let waypointCoordinates = new Array();
 
+//bakgrunnsbilder
+let skogBG;
+
+//preload bakgrunnsbilder
+if (document.images) {
+  skogBG = new Image();
+
+  skogBG.src = "media/skog.png";
+}
+document.body.style.background = "url(" + skogBG.src + ")no-repeat center fixed";
+
 function regnUtCoordinates() {
   for (let i=0;i<waypoints.length;i++) {
     //få y attribute til waypoints (fra rect), legg til scrolltop i tilfelle 
