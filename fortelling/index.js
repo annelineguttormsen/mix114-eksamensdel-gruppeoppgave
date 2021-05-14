@@ -66,10 +66,12 @@ function currentPictureNumber() {
   if (currentWindowYPos >= 0 && currentWindowYPos < waypointCoordinates[0]) {
     currentPic = 0;
   } else {
-    for (let waypointsNumber = 0; waypointsNumber < waypointCoordinates.length; waypointsNumber++) {
+    for (let waypointsNumber = 0; waypointsNumber < waypointCoordinates.length-1; waypointsNumber++) {
       if (currentWindowYPos > waypointCoordinates[waypointsNumber] && currentWindowYPos < waypointCoordinates[waypointsNumber+1]) {
         currentPic = waypointsNumber + 1;
         break;
+      } else {
+        currentPic = waypointCoordinates.length-1;
       }
     }
   }
@@ -81,7 +83,7 @@ function currentBGNumber() {
     currentBG = 0;
   } 
   else {
-    for (let waypointsNumber = 0; waypointsNumber < waypointBGCoordinates.length; waypointsNumber++) {
+    for (let waypointsNumber = 0; waypointsNumber < waypointBGCoordinates.length-1; waypointsNumber++) {
       if (currentWindowYPos > waypointBGCoordinates[waypointsNumber] && currentWindowYPos < waypointBGCoordinates[waypointsNumber+1]) {
         currentBG = waypointsNumber + 1;
         break;
